@@ -12,35 +12,15 @@ let mask = ''
 const maskLength = 36
 
 numberToBinaryArray = (number, length) => {
-  const minimumNecessaryLength = Math.log(number) / Math.log(2) + 1
-  if (!length) {
-    length = minimumNecessaryLength
+  const array = number.toString(2).split('')
+  while (array.length < length) {
+    array.unshift(0)
   }
-
-  if (length < minimumNecessaryLength) {
-    console.error(`array size ${length} too small for number ${number}!`)
-    return
-  }
-
-  const result = new Array(length).fill(0)
-  let accountedFor = 0
-
-  result.map((_, i) => {
-    if ((number - accountedFor) % 2 ** (i + 1) > 0) {
-      accountedFor += 2 ** i
-      result[i] = 1
-    }
-  })
-
-  return result.reverse()
+  return array
 }
 
 binaryArrayToNumber = (array) => {
-  return sum(
-    [...array].reverse().map((bit, index) => {
-      return bit * 2 ** index
-    })
-  )
+  return parseInt(array.join(''), 2)
 }
 
 // part 1
