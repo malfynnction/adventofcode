@@ -2,5 +2,8 @@
   "devDependencies": {
     "@types/node": "^16.11.11",
     "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "lodash.chunk": "^4.2.0"
   }
 }
